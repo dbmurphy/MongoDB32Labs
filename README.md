@@ -31,4 +31,12 @@ Simple run ./fast_run.sh after cloning , or run the scripts manually based on th
 
 
 ##Known issues
+###wger versions
 Some linux builds use wget 1.15 it has been found sometimes using https://  urls return 503 Service Unavailable, if this is the case replace https with http in get_mongod_downloads.sh 
+
+### Expected errors due to db.shutdownServer()
+restore from mmap into wiredtiger
+MongoDB shell version: 3.2.4
+connecting to: 127.0.0.1:44444/test
+2016-04-16T22:08:11.815+0100 E QUERY    [thread1] Error: error doing query: failed: network error while attempting to run command 'shutdown' on host '127.0.0.1:44444'  :
+DB.prototype.runCommand@src/mongo/shell/db.js:132:1
