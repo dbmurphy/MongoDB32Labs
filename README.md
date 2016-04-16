@@ -30,3 +30,5 @@ This Lab is built to go with the Percona Live 2016 SJC Tutorial on MongoDB 3.2 -
 Simple run ./fast_run.sh after cloning , or run the scripts manually based on the order above
 
 
+##Known issues
+Some linux builds use wget 1.15 it has been found sometimes using https://  urls return 503 Service Unavailable, if this is the case replace https with http in get_mongod_downloads.sh 
