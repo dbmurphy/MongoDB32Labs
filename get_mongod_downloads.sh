@@ -17,8 +17,15 @@ then
 	rm mongodb-osx-x86_64-3.0.11.tar
 else
 	echo "Downloading Binaries for Linux x86_64 generic"
-	wget -q --show-progress https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.11.tgz
-	wget -q --show-progress https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.4.tgz
+	wget --help | grep show-progress > /dev/null 
+	if [ "$?" -eq 0 ]
+	then
+		wget -q --show-progress https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.11.tgz
+		wget -q --show-progress https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.4.tgz
+	else
+		wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.11.tgz
+                wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.4.tgz
+	fi
 
 	echo "Decompressing downloads"
 	gzip -d mongodb-linux-x86_64-3.0.11.tgz
