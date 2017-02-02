@@ -97,8 +97,10 @@ function range_queries(db,collection,count,useIndex,useSort){
 		}
 		if (useSort == true){
 			findDoc['$orderby'] = { user_id:1};
+			db.getCollection(collection).find(findDoc['$query']).sort(findDoc['$orderby']).forEach(function(doc){x=doc});
+		} else {
+			db.getCollection(collection).find(findDoc['$query']).forEach(function(doc){x=doc});
 		}
-		db.getCollection(collection).find(findDoc).forEach(function(doc){x=doc});
 
 	}
 }
