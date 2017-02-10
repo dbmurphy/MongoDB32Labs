@@ -2,18 +2,18 @@
 #Build the main data folders
 mkdir -p $mongo_dbpath_root
 cd $mongo_dbpath_root
-mkdir -p {r1-1,r1-2,r1-3,r2-1,r2-2,r2-3,c1,c2,c3,m1}/data
+mkdir -p {r1-1,r1-2,r1-3,r1-4,r2-1,r2-2,r2-3,r2-4,c1,c2,c3,m1}/data
 
 cd "$start_dir"
 #Start the processes
 
 #replSet1
-for i in `seq 1 3`;do
+for i in `seq 1 4`;do
 	$bin_dir/mongod --fork --logpath $mongo_dbpath_root/r1-${i}/mongo.log --dbpath $mongo_dbpath_root/r1-${i} --port 1700${i} --replSet r1 --shardsvr --nohttpinterface 
 done
 
 #replSet2
-for i in `seq 1 3`;do
+for i in `seq 1 4`;do
 	$bin_dir/mongod --fork --logpath $mongo_dbpath_root/r2-${i}/mongo.log --dbpath $mongo_dbpath_root/r2-${i} --port 1800${i} --replSet r2 --shardsvr --nohttpinterface
 done
 
@@ -45,5 +45,5 @@ $bin_dir/mongo --quiet --eval "printjson(db.getSisterDB('admin').runCommand({add
 echo -e "Service\t\tPortRange"
 echo -e "Mongos\t\t27017"
 echo -e "Config\t\t19001-19003"
-echo -e "Shard1\t\t17001-17003"
-echo -e "Shard2\t\t18001-18003"
+echo -e "Shard1\t\t17001-17004"
+echo -e "Shard2\t\t18001-18004"
