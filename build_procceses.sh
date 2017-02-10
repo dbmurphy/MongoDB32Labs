@@ -2,7 +2,7 @@
 #Build the main data folders
 mkdir -p $mongo_dbpath_root
 cd $mongo_dbpath_root
-mkdir -p {r1-1,r1-2,r1-3,rs1-4,r2-1,r2-2,r2-3,rs2-4,c1,c2,c3,m1}/data
+mkdir -p {r1-1,r1-2,r1-3,r1-4,r2-1,r2-2,r2-3,r2-4,c1,c2,c3,m1}/data
 
 cd "$start_dir"
 #Start the processes
@@ -45,5 +45,5 @@ $bin_dir/mongo --quiet --eval "printjson(db.getSisterDB('admin').runCommand({add
 echo -e "Service\t\tPortRange"
 echo -e "Mongos\t\t27017"
 echo -e "Config\t\t19001-19003"
-echo -e "Shard1\t\t17001-17003"
-echo -e "Shard2\t\t18001-18003"
+echo -e "Shard1\t\t17001-17004"
+echo -e "Shard2\t\t18001-18004"
